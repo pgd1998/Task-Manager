@@ -8,5 +8,5 @@ const TaskSchema = new Schema({
     label: {type:String, required: false},
     status: {type: String, required: true, enum: ['pending', 'in progress','completed']},
 });
-const task = mongoose.model('task', TaskSchema);
-export default task;
+const Task = mongoose.model('Task', TaskSchema);
+export default Task;

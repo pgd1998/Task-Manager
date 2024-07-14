@@ -8,7 +8,6 @@ export const createtask = async (taskData) => {
                 'Content-Type':'application/json',
             },
         });
-        console.log("in api");
         return response.data;
     }
     catch (error) { 

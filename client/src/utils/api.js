@@ -1,8 +1,21 @@
-// will contact backend through api created 
 
-export const createTask = async (taskData) => {
+import axios from 'axios';
+
+export const createtask = async (taskData) => {
     try { 
-        
+        const response = await axios.post('/api/tasks', taskData, {
+            headers: {
+                'Content-Type':'application/json',
+            },
+        });
+        console.log("in api");
+        return response.data;
     }
-    catch (error) { }
+    catch (error) { 
+        if (error.response && error.response.data) {
+            throw new Error(error.response.data.message || "Failed to create task");
+        } else {
+            throw error;
+        }
+    }
 }

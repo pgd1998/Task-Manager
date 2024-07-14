@@ -43,6 +43,7 @@ export const deleteTask = async (req, res) => {
 
 export const createTask = async (req, res) => { 
     try { 
+        console.log("in server api");
         const taskData = req.body;
         const task = await Task.create(taskData);
         res.status(201).json(task);

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SaveButton = ({ onClick }) => {
+const SaveButton = ({ disabled=false, type="button" }) => {
     return (
-        <button onClick={onClick} className='save-button'>Save</button>
+        <button className='save-button' type={type} disabled={disabled}>Save</button>
     );
 }
 

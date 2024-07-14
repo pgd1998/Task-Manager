@@ -1,4 +1,6 @@
-import { SaveButton, CancelButton, DeleteButton,EditButton } from '../buttons';
+import SaveButton from './SaveButton';
+import CancelButton from './CancelButton';
+import DeleteButton from './DeleteButton';
+import EditButton from './EditButton';
 
-
-export {SaveButton, DeleteButton, EditButton, CancelButton};
+export { SaveButton, CancelButton, DeleteButton, EditButton };

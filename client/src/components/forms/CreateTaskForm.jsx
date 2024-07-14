@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SaveButton } from "../buttons";
+import { SaveButton,CancelButton } from "../buttons";
 import useCreateTask from "../../hooks/useCreateTask";
 
 const CreateTaskForm = () => {
@@ -23,7 +23,6 @@ const CreateTaskForm = () => {
         console.log(result);
     };
     const handleCancel = () => { 
-        console.log("cancel");
         setTaskName("");
         setDescription("");
         setDueDate("");
@@ -60,10 +59,7 @@ const CreateTaskForm = () => {
                 </select>
                 
                 <SaveButton type="submit" disabled={isLoading} />
-                {/* <CancelButton type="button" onClick={ handleCancel} /> */}
-                <button onClick={handleCancel} type="button" className="cancel">
-                    Cancel
-                </button>
+                <CancelButton type="button" onClick={ handleCancel} />
                 {error && <p className="error">{error.message}</p>}
             </form>
         </div>

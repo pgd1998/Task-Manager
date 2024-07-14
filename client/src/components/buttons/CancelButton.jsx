@@ -6,7 +6,6 @@ const CancelButton = ({ onClick, type="button" }) => {
             Cancel
         </button>
     );
-console.log("in cancel button");
 }
 
 export default CancelButton;

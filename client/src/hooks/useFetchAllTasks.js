@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import fetchAllTasks from "../utils/fetchAllApi";
 
 const useFetchAllTasks = () => {
@@ -7,21 +7,21 @@ const useFetchAllTasks = () => {
     const [error, setError] = useState(null);
 
     // Both useEffects do the same thing and are correct.
-    useEffect(() => {
-        const fetchData = async () => {
-            setIsLoading(true);
-            try {
-                const data = await fetchAllTasks();
-                setTasks(data);
-            } catch (error) {
-                setError(error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         setIsLoading(true);
+    //         try {
+    //             const data = await fetchAllTasks();
+    //             setTasks(data);
+    //         } catch (error) {
+    //             setError(error);
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     };
 
-        fetchData();
-    }, []);
+    //     fetchData();
+    // }, []);
 
     // useEffect(()=>{
     //     setIsLoading(true);
@@ -37,8 +37,19 @@ const useFetchAllTasks = () => {
             
     //     )
     // }, []);
+    const handleFetchTasks = async () => {
+        setIsLoading(true);
+        try {
+            const data = await fetchAllTasks();
+            setTasks(data);
+        } catch (error) {
+            setError(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
     
-    return {tasks, isLoading, error}
+    return {tasks, isLoading, error,handleFetchTasks}
 };
 
 export default useFetchAllTasks;

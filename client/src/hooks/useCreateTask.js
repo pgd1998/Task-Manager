@@ -1,22 +1,14 @@
 import { useState } from "react";
-import { createtask } from "../utils/api";
+import { createTask } from "../utils";
+import { useDispatch, useSelector } from 'react-redux';
 
 const useCreateTask = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const dispatch = useDispatch();
+    const isLoading = useSelector((state)=>state.tasks.createStatus==='loading')
+    const error = useSelector((state) => state.tasks.createError);
 
     const handleCreateTask = async (taskData) => {
-        setIsLoading(true);
-        try {
-            const createdTask = await createtask(taskData);
-            setIsLoading(false);
-            return createdTask;
-        } catch (error) {
-            setError(error);
-            console.log("in custom hook");
-            setIsLoading(false);
-            return null;
-        }
+        await dispatch(createTask(taskData))
     };
     return { isLoading, error, handleCreateTask };
 }

@@ -26,7 +26,6 @@ const CreateTaskForm = () => {
         const result = await handleCreateTask(taskData);
         console.log(result);
         // dispatch(useFetchTodaysTasks())
-        fetchTodaysTask(dispatch);
         setTaskName("");
         setDescription("");
         setDueDate("");

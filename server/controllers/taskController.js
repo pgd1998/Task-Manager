@@ -66,3 +66,24 @@ export const updateTask = async (req, res) => {
         res.status(500).json({ message: error.message });
      }
 }
+
+export const getTasksForToday = async (req, res) => {
+    try {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
+        const result = await Task.find({
+            date: {
+                $gte: today,
+                $lt: tomorrow
+            }
+        });
+        res.status(200).json(result);
+     }
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

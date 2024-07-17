@@ -21,6 +21,12 @@ const CreateTaskForm = () => {
         };
         const result = await handleCreateTask(taskData);
         console.log(result);
+        
+        setTaskName("");
+        setDescription("");
+        setDueDate("");
+        setLabel("low");
+        setStatus("pending");
     };
     const handleCancel = () => { 
         setTaskName("");

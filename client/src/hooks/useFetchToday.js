@@ -1,29 +1,43 @@
-import { useState, useEffect } from 'react';
-import fetchTodaysTask from '../utils/fetchTodayApi';
+// import { useState, useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import fetchTodaysTask from '../utils/fetchTodayApi';
+// import { fetchTasksBegin, fetchTasksSuccess, fetchTasksFailure } from '../store/actions/tasksActions';
 
-const useFetchTodaysTasks = () => {
+        
+// const useFetchTodaysTasks = () => { 
+//     const dispatch = useDispatch();
+
+//     useEffect(() => {
+//         dispatch(fetchTodaysTask(dispatch));
+//     }, [dispatch]);
+// };
+
+// export default useFetchTodaysTasks;
+
+import { useEffect, useState } from "react";
+import fetchTodaysTask from "../utils/fetchTodayApi";
+
+const useFetchToday =  () => {
     const [isLoading, setIsLoading] = useState(false);
-    const[error, setError] = useState(null);
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTask] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchTodayTasks = async () => {
+        const handleFetchToday = async () => {
             setIsLoading(true);
             try {
                 const response = await fetchTodaysTask();
-                setTasks(response);
-
+                setTask(response);
             } catch (error) {
                 setError(error);
             } finally {
-                setIsLoading(false);
+                isLoading(false);
             }
-
-        }
-        fetchTodayTasks();
-    }, []);
-
-    return { isLoading, error, tasks };
+        };
+        handleFetchToday();
+    },[])
+    
+    return { isLoading, tasks, error };
 }
 
-export default useFetchTodaysTasks;
+export default useFetchToday;

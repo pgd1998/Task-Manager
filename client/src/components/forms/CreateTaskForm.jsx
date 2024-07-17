@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { SaveButton,CancelButton } from "../buttons";
 import useCreateTask from "../../hooks/useCreateTask";
+import { useDispatch } from "react-redux";
+import useFetchTodaysTasks  from "../../hooks/useFetchToday";
+import fetchTodaysTask from "../../utils/fetchTodayApi";
 
 const CreateTaskForm = () => {
     const { handleCreateTask, isLoading, error } = useCreateTask();
@@ -9,6 +12,7 @@ const CreateTaskForm = () => {
     const [dueDate, setDueDate] = useState("");
     const [label, setLabel] = useState("low");
     const [status, setStatus] = useState("pending");
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +25,8 @@ const CreateTaskForm = () => {
         };
         const result = await handleCreateTask(taskData);
         console.log(result);
-        
+        // dispatch(useFetchTodaysTasks())
+        fetchTodaysTask(dispatch);
         setTaskName("");
         setDescription("");
         setDueDate("");

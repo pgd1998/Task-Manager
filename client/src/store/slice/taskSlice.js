@@ -21,7 +21,15 @@ const tasksSlice = createSlice({
             })
             .addCase(fetchTodaysTask.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.items = action.payload;
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const todaysTasks = action.payload.filter(task => {
+                    const taskDate = new Date(task.date);
+                    taskDate.setHours(0, 0, 0, 0);
+                    return taskDate.getTime() === today.getTime();
+                }
+                );
+                state.items = todaysTasks;
             })
             .addCase(fetchTodaysTask.rejected, (state, action) => {
                 state.status = 'failed';
@@ -39,7 +47,6 @@ const tasksSlice = createSlice({
                 state.createStatus = 'failed';
                 state.createError = action.payload;
             });
-        
     }
 });
 

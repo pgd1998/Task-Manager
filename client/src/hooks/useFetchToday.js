@@ -6,11 +6,12 @@ const useFetchToday =  () => {
     const isLoading = useSelector((state) => state.tasks.status==='loading');
     const error = useSelector((state) => state.tasks.fetchError);
     const tasks = useSelector((state) => state.tasks.items);
+        const createStatus = useSelector((state) => state.tasks.createStatus); // Monitor task creation status
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchTodaysTask());
-    },[dispatch])
+    },[dispatch,createStatus])
     console.log("tasks",tasks)
     return { isLoading, tasks, error };
 }

@@ -1,0 +1,27 @@
+.isLoading{
+    color: #333;
+    font-weight: bold;
+}
+.error{
+color: red;
+font-weight: bold;
+}
+.display-task-list{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.display-task-list h1{
+    color: #333;
+}
+
+.display-task-list ul{
+    list-style-type:none ;
+    padding: 0;
+}
+
+.display-task-list li{
+    background-color: aliceblue;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}

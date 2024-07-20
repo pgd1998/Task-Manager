@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import './Home.css';
 import TaskList from "../components/tasks/taskList";
 import Sidebar from "../components/sidebar/Sidebar";
+import Layout from "../components/layout/Layout";
 
 const Home = () => {
     const { isLoading, error, tasks } = useFetchTodaysTasks();
@@ -13,8 +14,7 @@ const Home = () => {
     if (error) return (<div className="error">Error: {error.message}</div>)
     
     return (
-        <div>
-            <Sidebar/>
+        <Layout>
         <div className="display-task-list">
             <h1>Today's Tasks</h1>
             {tasks.length === 0 ?
@@ -22,7 +22,7 @@ const Home = () => {
                 : <TaskList tasks={tasks || []} />}
             
             </div>
-            </div>
+            </Layout>
     );
  }
 

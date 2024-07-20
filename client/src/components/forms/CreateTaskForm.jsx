@@ -4,6 +4,7 @@ import useCreateTask from "../../hooks/useCreateTask";
 import { useDispatch } from "react-redux";
 import useFetchTodaysTasks  from "../../hooks/useFetchToday";
 import fetchTodaysTask from "../../utils/fetchTodayApi";
+import Layout from "../layout/Layout";
 
 const CreateTaskForm = () => {
     const { handleCreateTask, isLoading, error } = useCreateTask();
@@ -42,6 +43,7 @@ const CreateTaskForm = () => {
     }
 
     return (
+        <Layout>
         <div className="create-task-form">
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Task name</label>
@@ -72,7 +74,8 @@ const CreateTaskForm = () => {
                 <CancelButton type="button" onClick={ handleCancel} />
                 {error && <p className="error">{error.message}</p>}
             </form>
-        </div>
+            </div>
+            </Layout>
     );
 };
 

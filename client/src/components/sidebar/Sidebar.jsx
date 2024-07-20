@@ -4,13 +4,23 @@ import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
     const navigate = useNavigate();
-    const handleCreateTask = () => {
-        navigate('/create');
+
+    const handleButtonClick = (action) => {
+        if (action === "create") {
+            navigate('/create');
+        }
+        else if (action === "today") {
+            navigate('/todays-task');
+        }
+        else if (action === "view_all") {
+            navigate("/view-all")
+        }
     }
+
     return (
         <div className="sidebar">
-            <button className="sidebar-btn" onClick={handleCreateTask}>Add Task</button>
-            <button className="sidebar-btn">Todays Tasks</button>
+            <button className="sidebar-btn" onClick={()=>handleButtonClick("create")}>Add Task</button>
+            <button className="sidebar-btn" onClick={()=>handleButtonClick("today")}>Todays Tasks</button>
             <button className="sidebar-btn">View All Tasks</button>
         </div>
     )

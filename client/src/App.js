@@ -11,7 +11,7 @@ function App() {
       <Provider store={store}>
         <Router>
           <Routes>
-            {["/","/home"].map((path,index)=>
+            {["/","/home","todays-task"].map((path,index)=>
           <Route path={path} element={<Home />} key={index}/>
             )}
             <Route path='create' element={<CreateTaskForm />} />

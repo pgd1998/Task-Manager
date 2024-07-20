@@ -12,7 +12,6 @@ const useFetchToday =  () => {
     useEffect(() => {
         dispatch(fetchTodaysTask());
     },[dispatch,createStatus])
-    console.log("tasks",tasks)
     return { isLoading, tasks, error };
 }
 

@@ -8,7 +8,7 @@ const useCreateTask = () => {
     const error = useSelector((state) => state.tasks.createError);
 
     const handleCreateTask = async (taskData) => {
-        await dispatch(createTask(taskData))
+         dispatch(createTask(taskData))
     };
     return { isLoading, error, handleCreateTask };
 }

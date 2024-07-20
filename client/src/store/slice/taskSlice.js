@@ -1,4 +1,4 @@
-import { createTask, fetchTodaysTask, fetchAllTasks } from "../../utils";
+import { createTask, fetchTodaysTask, fetchAllTasks,editTask,deleteTask } from "../../utils";
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const tasksSlice = createSlice({
@@ -8,6 +8,8 @@ const tasksSlice = createSlice({
         status: 'idle', //for fetch todays task
         fetchAllStatus:'idle',
         createStatus: 'idle', //for create task
+        editStatus: 'idle',
+        deleteStatus:'idle',
         fetchError: null, // Separate error for fetch
         createError: null, // Separate error for create
     },
@@ -59,6 +61,33 @@ const tasksSlice = createSlice({
             .addCase(fetchAllTasks.rejected, (state, action) => {
                 state.fetchAllStatus = 'failed';
                 state.fetchError = action.payload;
+            })
+            // handling edit task 
+            .addCase(editTask.pending, (state) => {
+                state.editStatus = 'loading';
+            })
+            .addCase(editTask.fulfilled, (state, action) => {
+                state.editStatus = 'succeeded';
+                const index = state.items.findIndex(task => task.id === action.payload.id);
+                if (index != -1) {
+                    state.items[index] = action.payload;
+                }
+            })
+            .addCase(editTask.rejected, (state, action) => {
+                state.editStatus = 'failed';
+                state.error = action.payload;
+            })
+            // handle delete task
+            .addCase(deleteTask.pending, (state) => {
+                state.deleteStatus = 'loading';
+            })
+            .addCase(deleteTask.fulfilled, (state, action) => {
+                state.deleteStatus = 'succeded';
+                state.items = state.items.filter(task => task.id != action.payload)
+            })
+            .addCase(deleteTask.rejected, (state, action) => {
+                state.deleteStatus = 'failed';
+                state.error = action.payload;
             });
     }
 });

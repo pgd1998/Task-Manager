@@ -3,7 +3,6 @@ import useFetchTodaysTasks from "../hooks/useFetchToday";
 import { useSelector, useDispatch } from "react-redux";
 import './Home.css';
 import TaskList from "../components/tasks/taskList";
-import Sidebar from "../components/sidebar/Sidebar";
 import Layout from "../components/layout/Layout";
 
 const Home = () => {
@@ -19,7 +18,7 @@ const Home = () => {
             <h1>Today's Tasks</h1>
             {tasks.length === 0 ?
                 <h1>No tasks for today</h1>
-                : <TaskList tasks={tasks || []} />}
+                : <TaskList tasks={tasks} />}
             
             </div>
             </Layout>

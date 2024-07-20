@@ -1,4 +1,4 @@
-import { createTask, fetchTodaysTask } from "../../utils";
+import { createTask, fetchTodaysTask, fetchAllTasks } from "../../utils";
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const tasksSlice = createSlice({
@@ -6,6 +6,7 @@ const tasksSlice = createSlice({
     initialState: {
         items: [],
         status: 'idle', //for fetch todays task
+        fetchAllStatus:'idle',
         createStatus: 'idle', //for create task
         fetchError: null, // Separate error for fetch
         createError: null, // Separate error for create
@@ -46,6 +47,18 @@ const tasksSlice = createSlice({
             .addCase(createTask.rejected, (state, action) => {
                 state.createStatus = 'failed';
                 state.createError = action.payload;
+            })
+            // Handling fetchAllTasks
+            .addCase(fetchAllTasks.pending, (state) => {
+                state.fetchAllStatus = 'loading';
+            })
+            .addCase(fetchAllTasks.fulfilled, (state, action) => {
+                state.fetchAllStatus = 'succeeded';
+                state.items.push(action.payload);
+            })
+            .addCase(fetchAllTasks.rejected, (state, action) => {
+                state.fetchAllStatus = 'failed';
+                state.fetchError = action.payload;
             });
     }
 });

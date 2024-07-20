@@ -31,6 +31,5 @@ export const fetchTodaysTask = createAsyncThunk(
             return rejectWithValue(error.response && error.response.data?error.response.data : "Failed to fetch today's tasks");
     
         }
-        
     }
 );

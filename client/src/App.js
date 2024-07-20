@@ -2,6 +2,7 @@ import React from "react";
 import './App.css';
 import CreateTaskForm from './components/forms/CreateTaskForm';
 import Home from './pages/Home'
+import ViewAll from "./pages/ViewAll";
 import store from './store/store'
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -15,6 +16,7 @@ function App() {
           <Route path={path} element={<Home />} key={index}/>
             )}
             <Route path='create' element={<CreateTaskForm />} />
+            <Route path="view-all" element={<ViewAll/>}/>
             </Routes>
           </Router>
         </Provider>

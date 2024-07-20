@@ -21,7 +21,7 @@ const Sidebar = () => {
         <div className="sidebar">
             <button className="sidebar-btn" onClick={()=>handleButtonClick("create")}>Add Task</button>
             <button className="sidebar-btn" onClick={()=>handleButtonClick("today")}>Todays Tasks</button>
-            <button className="sidebar-btn">View All Tasks</button>
+            <button className="sidebar-btn" onClick={()=>handleButtonClick("view_all")}>View All Tasks</button>
         </div>
     )
 }

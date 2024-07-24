@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './TaskCard.css';
 import useEditTask from "../../hooks/useEditTask";
 import TaskCardModal from "../modals/TaskCardModal";
+import useDeleteTask from "../../hooks/useDeleteTask";
 
 const TaskCard = ({ task }) => {
 
@@ -9,7 +10,9 @@ const TaskCard = ({ task }) => {
     const [status, setStatus] = useState(task.status);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const { isLoading, error, handleEditTask } = useEditTask();
+    const { isLoading:loadingEdit, error:editError, handleEditTask } = useEditTask();
+
+    const { isLoading: loadingDelete, error:deleteError, handleDeleteTask } = useDeleteTask();
 
     const handleLabelChange = (e) => {
         const newLabel = e.target.value;
@@ -27,7 +30,9 @@ const TaskCard = ({ task }) => {
         setIsModalOpen(true);
     }
 
-    
+    const handleDelete = () => {
+        handleDeleteTask(task._id);
+    }
 
 
     return (

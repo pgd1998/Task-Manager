@@ -55,25 +55,25 @@
 // export default useFetchAllTasks;
 
 
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { fetchAllTasks } from "../utils";
 const useFetchAllTasks = ()=>{
     const isLoading = useSelector((state) => state.tasks.fetchAllStatus === 'loading');
     const error = useSelector((state) => state.tasks.fetchError);
     const tasks = useSelector((state) => state.tasks.items);
+    const createStatus = useSelector((state) => state.tasks.createStatus); 
+    const editStatus = useSelector((state) => state.tasks.editStatus);
+    const deleteStatus = useSelector((state) => state.tasks.deleteStatus);
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-        
-    //     handleFetchAll();
-    // }, [dispatch]);
+    useEffect(() => {
+         dispatch(fetchAllTasks());
+    }, [dispatch,createStatus,editStatus,deleteStatus]);
 
-    const handleFetchAll = async()=>{
-        await dispatch(fetchAllTasks());
-    }
     
-    return {isLoading,error,handleFetchAll,tasks}
+    
+    return {isLoading,error,tasks}
 }
 
 export default useFetchAllTasks;

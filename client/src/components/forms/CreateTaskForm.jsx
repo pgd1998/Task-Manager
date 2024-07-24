@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import useFetchTodaysTasks  from "../../hooks/useFetchToday";
 import fetchTodaysTask from "../../utils/fetchTodayApi";
 import Layout from "../layout/Layout";
+import './CreateTaskForm.css'
 
 const CreateTaskForm = () => {
     const { handleCreateTask, isLoading, error } = useCreateTask();
@@ -25,7 +26,6 @@ const CreateTaskForm = () => {
             status,
         };
         const result = await handleCreateTask(taskData);
-        console.log(result);
         // dispatch(useFetchTodaysTasks())
         setTaskName("");
         setDescription("");
@@ -45,13 +45,15 @@ const CreateTaskForm = () => {
     return (
         <Layout>
         <div className="create-task-form">
-            <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
+                    <div className="name-description">
                 <label htmlFor="name">Task name</label>
                 <input type="text" id="name" name="name" value={taskName} onChange={(e) => setTaskName(e.target.value)} required />
                 
                 <label htmlFor="description">Description</label>
-                <input type="text" id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} required />
-                
+                <textarea type="text" id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} required />
+                    </div>
+                    <div className="buttons-container">
                 <label htmlFor="dueDate">Due date</label>
                 <input type="date" id="dueDate" name="dueDate" value={dueDate} onChange={(e) => setDueDate(e.target.value)} required />
                 
@@ -72,7 +74,8 @@ const CreateTaskForm = () => {
                 
                 <SaveButton type="submit" disabled={isLoading} />
                 <CancelButton type="button" onClick={ handleCancel} />
-                {error && <p className="error">{error.message}</p>}
+                        {error && <p className="error">{error.message}</p>}
+                        </div>
             </form>
             </div>
             </Layout>

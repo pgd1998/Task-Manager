@@ -1,25 +1,35 @@
 import React, { useState } from "react";
 import './TaskCard.css';
 import useEditTask from "../../hooks/useEditTask";
+import TaskCardModal from "../modals/TaskCardModal";
 
-const TaskCard = ({ task,children }) => {
+const TaskCard = ({ task }) => {
 
     const [label, setLabel] = useState(task.label);
     const [status, setStatus] = useState(task.status);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const { isLoading, error, handleEditTask } = useEditTask();
+
     const handleLabelChange = (e) => {
-        e.stopPropagation();
         const newLabel = e.target.value;
         setLabel(newLabel);
         handleEditTask({ taskID: task._id, updatedTaskData:{ ...task, label: newLabel }});
     }
 
     const handleStatusChange = (e) => {
-        e.stopPropagation();
         const newStatus = e.target.value;
         setStatus(newStatus);
         handleEditTask({ taskID: task._id, updatedTaskData:{ ...task, status: newStatus }});
     }
+
+    const handleModel = ()=>{
+        setIsModalOpen(true);
+    }
+
+    
+
+
     return (
         <div className="task-card">
             <h2 className="task-name">{task.name}</h2>
@@ -40,8 +50,9 @@ const TaskCard = ({ task,children }) => {
                 <option value='completed'>Completed</option>
             </select>
             
-            <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={handleModel}>Edit</button>
+                {isModalOpen && <TaskCardModal task={task} onClose={()=>setIsModalOpen(false)}/>}
+            <button onClick={handleDelete}>Delete</button>
             </div>
         </div>
     );

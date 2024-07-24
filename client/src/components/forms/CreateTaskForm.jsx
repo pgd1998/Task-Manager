@@ -48,7 +48,7 @@ const CreateTaskForm = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="name-description">
                 <label htmlFor="name">Task name</label>
-                <input type="text" id="name" name="name" value={taskName} onChange={(e) => setTaskName(e.target.value)} required />
+                <input type="text" id="name" name="name" value={taskName} onChange={(e) => setTaskName(e.target.value)} defaultValue={'abc'} required />
                 
                 <label htmlFor="description">Description</label>
                 <textarea type="text" id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} required />

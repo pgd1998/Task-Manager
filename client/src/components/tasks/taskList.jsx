@@ -14,14 +14,10 @@ const TaskList = ({ tasks }) => {
         <div>
             {tasks.map((task => 
                 <div key={task.id} >
-                    <TaskCard task={task}>
-                        <button onClick={() => handleCardClick(task)} className="open-modal-btn">
-                            Open Modal
-                    </button>
-                    </TaskCard> 
+                    <TaskCard task={task}/>
                     </div>
             ))}
-            {isModalOpen && <TaskCardModal task={selectedTask} onClose={()=>setIsModalOpen(false)}/>}
+            {/* {isModalOpen && <TaskCardModal task={selectedTask} onClose={()=>setIsModalOpen(false)}/>} */}
         </div>
     )
 }

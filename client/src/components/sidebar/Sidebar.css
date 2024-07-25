@@ -1,0 +1,25 @@
+.sidebar{
+position: fixed;
+left: 0;
+top: 0;
+width: 15%;
+height: 100%;
+background-color: white;
+padding: 20px;
+box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-btn{
+display: block;
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+background-color: wheat;
+border: 1px solid #ddd;
+cursor: pointer;
+text-align: left;
+}
+
+.sidebar-btn:hover{
+    background-color: #e9e9e9;
+}

@@ -1,0 +1,11 @@
+.main-content{
+    margin-left: 15%;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.global-container{
+    display: flex;
+    height: 100vh;
+}

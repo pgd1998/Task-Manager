@@ -7,7 +7,9 @@ connectDB();
 const app = express();
 
 // Enable CORS
-app.use(cors())
+app.use(cors({
+  origin: 'http://task-manager-front-end.s3-website-ap-southeast-2.amazonaws.com'
+}));
 
 //Middleware
 app.use(express.json());

@@ -1,5 +1,5 @@
 const config = {
-    apiBaseUrl:'http://task-manager-front-end.s3-website-ap-southeast-2.amazonaws.com/api',
+    apiBaseUrl:'http://3.27.4.56:5000/api',
 };
 
 export default config;

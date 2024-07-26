@@ -20,12 +20,13 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import config from "./config";
 
 export const fetchTodaysTask = createAsyncThunk(
     'tasks/fetchTodaysTasks',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get('/api/tasks/today');
+            const response = await axios.get(`${config.apiBaseUrl}/tasks/today`);
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response && error.response.data?error.response.data : "Failed to fetch today's tasks");

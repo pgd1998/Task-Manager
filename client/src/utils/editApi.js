@@ -1,10 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import config from "./config";
+
 export const editTask = createAsyncThunk(
     'tasks/edit',
     async ({taskID,updatedTaskData}, { rejectWithValue }) => {
         try {
-            const response = await axios.patch(`/api/tasks/${taskID}`, updatedTaskData, {
+            const response = await axios.patch(`${config.apiBaseUrl}/tasks/${taskID}`, updatedTaskData, {
                 headers: {
                     'Content-Type':'application/json',
                 },

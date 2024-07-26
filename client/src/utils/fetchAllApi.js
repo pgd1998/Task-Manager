@@ -17,12 +17,13 @@
 
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import config from "./config";
 
 export const fetchAllTasks = createAsyncThunk(
     'tasks/fetchAll',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get('/api/tasks');
+            const response = await axios.get(`${config.apiBaseUrl}/tasks`);
             return response.data;
         }
         catch (error) {

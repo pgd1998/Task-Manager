@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import config from "./config";
 // const fetchTask = async (taskID) => {
 //     try { 
 //         const response = await axios.get(`/api/tasks/${taskID}`);
@@ -20,7 +21,7 @@ const fetchTask = createAsyncThunk(
     'tasks/fetchOne',
     async (taskID, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`/api/tasks/${taskID}`);
+            const response = await axios.get(`${config.apiBaseUrl}/tasks/${taskID}`);
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response && error.response.data ? error.response.data : "Unable to fetch all the tasks");

@@ -15,7 +15,7 @@ const Home = () => {
     return (
         <Layout>
         <div className="display-task-list">
-            <h1>Today's Tasks</h1>
+            <h1>Today's Taskssss</h1>
             {tasks.length === 0 ?
                 <h1>No tasks for today</h1>
                 : <TaskList tasks={tasks} />}

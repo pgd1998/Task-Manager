@@ -1,10 +1,13 @@
 import express from 'express';
 import connectDB from './config/db.js';
 import taskRoutes from './routes/taskRoutes.js';
-
+import cors from 'cors';
 
 connectDB();
 const app = express();
+
+// Enable CORS
+app.use(cors())
 
 //Middleware
 app.use(express.json());

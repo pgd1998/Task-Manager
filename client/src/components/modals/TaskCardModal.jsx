@@ -31,7 +31,8 @@ const TaskCardModal = ({ task, onClose }) => {
             <div className="modal-content">
                 <form className='modal-form' onSubmit={handleSubmit}>
                     <input type='text' value={isName} onChange={(e) => setIsName(e.target.value)}   />
-                    <textarea type='text' value={description} onChange={(e) => setDescription(e.target.value)}  />
+                    <textarea type='text' value={description} onChange={(e) => setDescription(e.target.value)} />
+                    <div className='button-container'>
                     <label htmlFor="dueDate">Due date</label>
                     <input type="date" id="dueDate" name="dueDate" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
                     
@@ -47,11 +48,11 @@ const TaskCardModal = ({ task, onClose }) => {
                         <option value="pending">Pending</option>
                         <option value="in progress">In progress</option>
                         <option value="completed">Completed</option>
-                    
                     </select>
                 
                     <SaveButton type="submit" disabled={isLoading} />
-                    <button onClick={onClose}>Close</button>
+                        <button onClick={onClose}>Close</button>
+                        </div>
                 </form>
             </div>
         </div>

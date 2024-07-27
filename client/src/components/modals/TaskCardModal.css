@@ -1,4 +1,6 @@
 .modal-backdrop{
+    /* display: flex;
+    flex-direction: column; */
     position: fixed;
     top: 0;
     left: 0;
@@ -7,12 +9,27 @@
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
 }
 .modal-content{
     background-color: white;
     padding: 10px;
     border-radius: 5px;
     width: 40%;
-    height: 45%;
+    height: 25%;
+    transform: translateY(-20%);
+    
+}
+
+.modal-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5%;
 }

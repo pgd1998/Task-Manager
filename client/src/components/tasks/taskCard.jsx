@@ -44,11 +44,14 @@ const TaskCard = ({ task }) => {
         <div className="task-card">
             <h2 className="task-name">{task.name}</h2>
             {/* <label htmlFor="description"> Description </label> */}
-            <p className="task-description">{task.task_description}</p>
-            <p>{task.date}</p>
-            {/* <p>{task.label}</p>
-            <p>{task.status}</p> */}
+            {/* <p className="task-description">{task.task_description}</p> */}
             <div className="buttons-container">
+            <label htmlFor="due-date">Due:</label>
+            <p id="due-date">{
+                task.date ? task.date.split("T")[0]:"No due date available"
+            }
+            </p>
+            
             <select value={label} onChange={handleLabelChange}>
                 <option value='low'>Low</option>
                 <option value='medium'>Medium</option>

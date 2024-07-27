@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { SaveButton,CancelButton } from "../buttons";
 import useCreateTask from "../../hooks/useCreateTask";
 import { useDispatch } from "react-redux";
-import useFetchTodaysTasks  from "../../hooks/useFetchToday";
-import fetchTodaysTask from "../../utils/fetchTodayApi";
 import Layout from "../layout/Layout";
 import './CreateTaskForm.css'
 

@@ -8,13 +8,13 @@ const app = express();
 
 // Enable CORS
 app.use(cors({
-  origin: 'https://www.poorvithgowda.com'
+  origin: 'http://www.poorvithgowda.com'
 }));
 
 // Middleware to redirect from non-www to www
 app.use((req, res, next) => {
   if (req.headers.host === 'poorvithgowda.com') {
-    return res.redirect(301, 'https://www.poorvithgowda.com' + req.originalUrl);
+    return res.redirect(301, 'http://www.poorvithgowda.com' + req.originalUrl);
   }
   next();
 });
@@ -28,6 +28,6 @@ app.use(express.json());
 //Routes
 app.use('/api/tasks',taskRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 80;
 console.log('Starting Server...')
 app.listen(PORT,()=>console.log(`Server started on port ${PORT}`));

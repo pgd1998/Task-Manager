@@ -23,7 +23,12 @@ const TaskCard = ({ task }) => {
     const handleStatusChange = (e) => {
         const newStatus = e.target.value;
         setStatus(newStatus);
-        handleEditTask({ taskID: task._id, updatedTaskData:{ ...task, status: newStatus }});
+        if (newStatus==='completed') { 
+            handleDelete();
+        }
+        else {
+            handleEditTask({ taskID: task._id, updatedTaskData: { ...task, status: newStatus } });
+        }
     }
 
     const handleModel = ()=>{

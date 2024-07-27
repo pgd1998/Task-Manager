@@ -41,8 +41,6 @@ const TaskList = ({ tasks = [] }) => {
     // Safeguard to ensure tasks is always an array
     const renderTasks = Array.isArray(tasks) ? tasks : [];
 
-    console.log(renderTasks); // Debugging with the safeguard in place
-
     return (
         <div>
             {renderTasks.map((task => 

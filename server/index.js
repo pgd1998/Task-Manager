@@ -12,12 +12,12 @@ app.use(cors({
 }));
 
 // Middleware to redirect from non-www to www
-// app.use((req, res, next) => {
-//   if (req.headers.host === 'poorvithgowda.com') {
-//     return res.redirect(301, 'https://www.poorvithgowda.com' + req.originalUrl);
-//   }
-//   next();
-// });
+app.use((req, res, next) => {
+  if (req.headers.host === 'poorvithgowda.com') {
+    return res.redirect(301, 'https://www.poorvithgowda.com' + req.originalUrl);
+  }
+  next();
+});
 
 //Middleware
 app.use(express.json());
